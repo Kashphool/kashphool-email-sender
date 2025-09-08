@@ -1,15 +1,19 @@
-# Templated Email Sender
+# Kashphool Bengali Association - Email Sender
 
-A Python-based email sender that allows you to send personalized HTML emails using Gmail SMTP, with support for CSV recipient lists and Jinja2 templates.
+A Python-based email sender system specifically designed for the Kashphool Bengali Association's Durga Puja 2025 invitations. Features beautiful HTML email templates, Gmail SMTP integration, and bulk sending capabilities.
 
 ## Features
 
+- 🪔 **Durga Puja 2025 Invitation System** - Beautiful, responsive HTML email templates
 - 📧 Gmail SMTP integration with app password authentication
-- 🎨 HTML email templates using Jinja2
-- 📊 CSV file support for bulk recipient management
+- 🎨 Professional email design with yellow banners and cultural themes
+- 📊 CSV file support for bulk community member management
+- 🔗 Integrated registration and cultural performance signup links
+- 📱 Mobile-responsive design with cross-platform compatibility
 - 🔒 Environment variable configuration for security
 - 📝 Comprehensive logging and error handling
 - ✅ Batch sending with success/failure tracking
+- 🎯 Static styling (no dark mode variations) for consistent appearance
 
 ## Prerequisites
 
@@ -51,7 +55,21 @@ To use Gmail SMTP, you need to generate an App Password:
 
 ## Usage
 
-### Basic Usage
+### Durga Puja Invitation Usage
+
+To send Durga Puja 2025 invitations:
+
+```bash
+python send_durga_puja_invitations.py
+```
+
+This will automatically:
+- Load recipients from `durga_puja_recipients.csv`
+- Use the beautiful Durga Puja invitation template
+- Send personalized invitations to all community members
+- Generate detailed success/failure reports
+
+### Custom Usage (Advanced)
 
 ```python
 from email_sender import TemplatedEmailSender
@@ -59,13 +77,11 @@ from email_sender import TemplatedEmailSender
 # Initialize the sender
 sender = TemplatedEmailSender()
 
-# Send bulk emails
+# Send custom emails using the core class
 results = sender.send_bulk_emails(
-    csv_file_path="recipients.csv",
-    template_name="welcome_email.html",
-    subject_template="Welcome {{name}}! Your account is ready",
-    company_name="Your Company",
-    support_email="support@yourcompany.com"
+    csv_file_path="your_recipients.csv",
+    template_name="your_template.html",
+    subject_template="Your Custom Subject {{first_name}}"
 )
 
 print(f"Successful: {results['success']}, Failed: {results['failed']}")
@@ -73,15 +89,19 @@ print(f"Successful: {results['success']}, Failed: {results['failed']}")
 
 ### CSV File Format
 
-Your CSV file should contain at least `name` and `email` columns:
+For Durga Puja invitations, your CSV file should contain:
 
 ```csv
-name,email
-John Doe,john.doe@example.com
-Jane Smith,jane.smith@example.com
+first_name,last_name,email
+Pradatta,Adhikary,pradatta.adhikary@gmail.com
+Kaushik,Banerjee,kaushik@example.com
+Tanumoy,Talukder,tanumoy@example.com
 ```
 
-You can add additional columns that will be available as template variables.
+**Important**: 
+- Copy `durga_puja_recipients.example.csv` to `durga_puja_recipients.csv`
+- Add your real community member details
+- The actual CSV files are gitignored to protect privacy
 
 ### Creating Templates
 
@@ -121,16 +141,26 @@ sender = TemplatedEmailSender()
 ## Project Structure
 
 ```
-templated-email-sender/
-├── email_sender.py          # Main email sender class
-├── requirements.txt         # Python dependencies
-├── .env.example            # Environment variables template
-├── .env                    # Your actual environment variables (create this)
-├── recipients.csv          # Example CSV file
-├── templates/              # Email templates directory
-│   └── welcome_email.html  # Example HTML template
-├── email_sender.log        # Log file (created automatically)
-└── README.md              # This file
+kashphool-email-sender/
+├── email_sender.py                    # Main email sender class
+├── send_durga_puja_invitations.py     # Durga Puja invitation sender script
+├── requirements.txt                   # Python dependencies
+├── .env.example                       # Environment variables template
+├── .env                              # Your actual environment variables (create this)
+├── .gitignore                        # Git ignore file (protects sensitive data)
+├── durga_puja_recipients.example.csv  # Example CSV for Durga Puja invitations
+├── templates/                         # Email templates directory
+│   └── durga_puja_invitation.html    # Beautiful Durga Puja 2025 invitation template
+├── images/                           # Email images and assets
+│   ├── banner.png                    # Durga Puja banner image
+│   ├── signature-logo.png            # Association logo
+│   ├── facebook-50.png               # Social media icons
+│   └── map.png                       # Venue location map
+└── README.md                         # This file
+
+# Files you need to create:
+├── durga_puja_recipients.csv         # Your actual recipient list (gitignored)
+└── email_sender.log                  # Log file (created automatically, gitignored)
 ```
 
 ## Template Variables

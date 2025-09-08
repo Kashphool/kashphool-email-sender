@@ -56,3 +56,13 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Email-specific files
+# Recipient CSV files with real email addresses (keep examples)
+durga_puja_recipients.csv
+
+# Test files
+test_template.html
+
+# IntelliJ IDEA files
+*.iml
