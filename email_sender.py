@@ -98,6 +98,7 @@ class TemplatedEmailSender:
             ("images/invitation_banner.png", "invitation_banner"),
             ("images/cultural_banner.png", "cultural_banner"),
             ("images/schedule.png", "schedule"),
+            ("images/footer.png", "footer"),
         ]
         
         for file_path, cid in image_files:
