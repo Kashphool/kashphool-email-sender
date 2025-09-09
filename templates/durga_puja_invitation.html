@@ -3,34 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <meta name="supported-color-schemes" content="light">
     <title>Durga Puja Invitation - {{organization_name}}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;500;600&family=Allura&family=Alex+Brush&family=Satisfy&family=Kaushan+Script&display=swap');
-        
+
+        /* BULLETPROOF DARK MODE PREVENTION */
+        :root {
+            color-scheme: light only !important;
+            supported-color-schemes: light !important;
+        }
+
+        * {
+            color-scheme: light only !important;
+        }
+
+        /* ULTIMATE DARK MODE OVERRIDE PREVENTION */
+        /* This makes the email behave like an image with fixed colors */
+        html, body, div, span, p, h1, h2, h3, h4, h5, h6, strong, em, a, table, tr, td, th {
+            color-scheme: light only !important;
+            -webkit-color-scheme: light only !important;
+            -moz-color-scheme: light only !important;
+        }
+
+        /* Prevent any automatic color inversions */
+        * {
+            -webkit-filter: none !important;
+            -moz-filter: none !important;
+            -ms-filter: none !important;
+            filter: none !important;
+        }
+
+        /* Force specific elements to maintain their design colors */
+        .content {
+            background-color: transparent !important;
+        }
+
+        .content-text {
+            background-color: transparent !important;
+        }
+
         body {
             font-family: 'Lora', serif;
             line-height: 1.6;
-            color: #333;
+            color: #333 !important;
             margin: 0;
             padding: 20px;
-            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%) !important;
             width: 100% !important;
             -webkit-text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
+            color-scheme: light only !important;
+            /* Force light mode background */
+            background-color: #f0f0f0 !important;
             min-height: 100vh;
         }
-        
+
         .email-container {
-            background-color: #ffffff;
+            background-color: #ffffff !important;
             margin: 20px auto;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
             overflow: hidden;
             max-width: 650px !important;
+            color-scheme: light only !important;
             width: 100%;
             border: 1px solid #e0e0e0;
         }
-        
+
         /* Header Banner */
         .header-banner {
             background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #8B0000 100%);
@@ -38,7 +79,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .banner-image {
             width: 100%;
             height: auto;
@@ -46,19 +87,19 @@
             max-height: 200px;
             object-fit: cover;
         }
-        
+
         .decorative-border {
             background: linear-gradient(90deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
             height: 8px;
             width: 100%;
         }
-        
+
         .header-content {
             padding: 25px 30px;
             text-align: center;
             position: relative;
         }
-        
+
         .header-content::before {
             content: '';
             position: absolute;
@@ -66,12 +107,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
-        
+
         .organization-name {
             color: #FFD700;
             font-size: 14px;
@@ -80,7 +120,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-        
+
         .main-title {
             font-family: 'Cinzel', serif;
             font-size: 42px;
@@ -90,7 +130,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             letter-spacing: 3px;
         }
-        
+
         .venue-info {
             color: #FFD700;
             font-size: 13px;
@@ -98,20 +138,20 @@
             font-weight: 500;
             letter-spacing: 1px;
         }
-        
+
         /* Main Content */
         .content {
             padding: 40px 35px;
             background-color: #ffffff;
         }
-        
+
         .greeting {
             font-size: 18px;
             color: #8B0000;
             margin-bottom: 8px;
             font-weight: 600;
         }
-        
+
         .thank-you-title {
             font-size: 24px;
             color: #DC143C;
@@ -120,7 +160,7 @@
             text-align: center;
             font-family: 'Cinzel', serif;
         }
-        
+
         .content-text {
             font-size: 16px;
             line-height: 1.7;
@@ -128,7 +168,7 @@
             color: #444;
             text-align: justify;
         }
-        
+
         .invitation-text {
             background: linear-gradient(135deg, #FFF8DC 0%, #F0E68C 100%);
             color: #8B0000 !important;
@@ -138,8 +178,8 @@
             border-radius: 0 8px 8px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        
-        
+
+
         .registration-link {
             display: inline-block;
             background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
@@ -152,21 +192,21 @@
             box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
             transition: all 0.3s ease;
         }
-        
+
         .registration-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
             color: white !important;
             text-decoration: none !important;
         }
-        
+
         /* Force button text to stay white in ALL modes and email clients */
         .registration-link, .registration-link *, .registration-link:visited, .registration-link:hover, .registration-link:active {
             color: white !important;
             -webkit-text-fill-color: white !important;
             background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%) !important;
         }
-        
+
         /* Force banner text colors to stay consistent - STRONGER RULES */
         .invitation-text, .invitation-text *, .invitation-text strong, .invitation-text p, .invitation-text span {
             color: #8B0000 !important;
@@ -174,35 +214,35 @@
             -moz-text-fill-color: #8B0000 !important;
             text-fill-color: #8B0000 !important;
         }
-        
+
         .cultural-section, .cultural-section *, .cultural-section strong, .cultural-section p, .cultural-section span {
             color: #8B0000 !important;
             -webkit-text-fill-color: #8B0000 !important;
             -moz-text-fill-color: #8B0000 !important;
             text-fill-color: #8B0000 !important;
         }
-        
+
         /* Force schedule text colors for readability */
         .schedule-title {
             color: #8B0000 !important;
             -webkit-text-fill-color: #8B0000 !important;
         }
-        
+
         .day-header {
             color: white !important;
             -webkit-text-fill-color: white !important;
         }
-        
+
         .event-time, .event-name, .event-detail {
             color: #8B0000 !important;
             -webkit-text-fill-color: #8B0000 !important;
         }
-        
+
         .footer-section, .footer-section *, .footer-section a {
             color: #F5F5DC !important;
             -webkit-text-fill-color: #F5F5DC !important;
         }
-        
+
         /* Force email links to be white */
         .footer-section a[href^="mailto:"], a[href^="mailto:"] {
             color: #FFFFFF !important;
@@ -210,7 +250,7 @@
             -moz-text-fill-color: #FFFFFF !important;
             text-fill-color: #FFFFFF !important;
         }
-        
+
         /* Force all email addresses in footer to be white (including auto-detected ones) */
         .footer a, .footer a:link, .footer a:visited, .footer a:hover, .footer a:active {
             color: #FFFFFF !important;
@@ -219,12 +259,12 @@
             text-fill-color: #FFFFFF !important;
             text-decoration: none !important;
         }
-        
+
         /* Schedule Section */
         .schedule-section {
             margin: 30px 0;
         }
-        
+
         .schedule-title {
             font-family: 'Cinzel', serif;
             font-size: 20px;
@@ -233,21 +273,21 @@
             text-align: center;
             font-weight: 600;
         }
-        
+
         .schedule-container {
             background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
             padding: 3px;
             border-radius: 12px;
             margin: 20px 0;
         }
-        
+
         .schedule-inner {
             background: #ffffff;
             border-radius: 9px;
             padding: 25px;
             position: relative;
         }
-        
+
         .schedule-inner::before {
             content: '';
             position: absolute;
@@ -259,13 +299,13 @@
             border-radius: 6px;
             pointer-events: none;
         }
-        
+
         .schedule-day {
             margin-bottom: 25px;
             position: relative;
             z-index: 1;
         }
-        
+
         .day-header {
             background: linear-gradient(135deg, #DC143C 0%, #8B0000 100%);
             color: white;
@@ -276,11 +316,11 @@
             margin-bottom: 15px;
             font-size: 16px;
         }
-        
+
         .event-grid {
             display: block;
         }
-        
+
         .event-item {
             background: linear-gradient(135deg, #FFF8DC 0%, #F0E68C 100%);
             padding: 15px 20px;
@@ -290,7 +330,7 @@
             margin-bottom: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .event-time {
             font-weight: 600;
             color: #8B0000;
@@ -300,20 +340,20 @@
             border-bottom: 1px solid #DC143C;
             padding-bottom: 4px;
         }
-        
+
         .event-name {
             color: #444;
             font-weight: 500;
             line-height: 1.5;
         }
-        
+
         .event-detail {
             display: block;
             margin-bottom: 3px;
             color: #555;
         }
-        
-        
+
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, #2C1810 0%, #8B0000 100%);
@@ -321,38 +361,38 @@
             text-align: center;
             color: #FFD700;
         }
-        
+
         .footer-text {
             font-size: 14px;
             margin-bottom: 10px;
         }
-        
+
         .contact-info {
             font-size: 12px;
             color: #FFF8DC;
             margin-top: 15px;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 600px) {
             .email-container {
                 margin: 10px;
             }
-            
+
             .main-title {
                 font-size: 32px;
             }
-            
+
             .content {
                 padding: 25px 20px;
             }
-            
+
             .event-grid {
                 grid-template-columns: 1fr;
             }
-            
+
         }
-        
+
         /* Decorative Elements */
         .lotus-decoration {
             color: #FFD700;
@@ -360,7 +400,7 @@
             text-align: center;
             margin: 20px 0;
         }
-        
+
         /* Cultural Section */
         .cultural-section {
             margin: 30px 0;
@@ -371,13 +411,13 @@
             border-radius: 0 8px 8px 0;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        
-        
+
+
         /* Venue Section */
         .venue-section {
             margin: 30px 0;
         }
-        
+
         .venue-info-box {
             background: #f9f9f9;
             padding: 20px;
@@ -386,18 +426,18 @@
             text-align: center;
             margin: 20px 0;
         }
-        
+
         .venue-info-box p {
             margin: 0;
             font-size: 16px;
             color: #444;
         }
-        
+
         .map-container {
             margin: 20px 0;
             text-align: center;
         }
-        
+
         .map-placeholder {
             background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
             border: 2px solid #ccc;
@@ -408,214 +448,160 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .map-placeholder:hover {
             background: linear-gradient(135deg, #e8e8e8 0%, #d8d8d8 100%);
             border-color: #DC143C;
         }
     </style>
 </head>
-<body>
-    <div class="email-container">
-        <!-- Header Banner -->
-        <div class="header-banner">
-            <img src="cid:banner" alt="Durga Puja Banner" class="banner-image">
+<body style="font-family: 'Lora', serif; color: #333 !important; background-color: #f0f0f0 !important; color-scheme: light only !important; margin: 0; padding: 20px;">
+<div class="email-container"
+     style="background-color: #ffffff !important; color-scheme: light only !important; max-width: 650px; margin: 20px auto; border-radius: 12px; overflow: hidden; border: 1px solid #e0e0e0;">
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <img src="cid:banner" alt="Durga Puja Banner" class="banner-image">
+    </div>
+
+    <!-- Main Content -->
+    <div class="content" style="background-color: transparent !important; color-scheme: light only !important;">
+        <div class="greeting" style="color: #333 !important; background-color: transparent !important;">Hi
+            {{first_name}},
         </div>
-        
-        <!-- Main Content -->
-        <div class="content">
-            <div class="greeting">Hi {{first_name}},</div>
-            
-            <h2 class="thank-you-title" style="font-family: 'Allura', 'Alex Brush', 'Satisfy', 'Kaushan Script', cursive; font-size: 36px; color: #DC143C; text-align: center; margin: 25px 0; font-weight: 400; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">Thank you for your generous donation</h2>
-            
-            <div class="content-text">
-                On behalf of everyone at Kashphool, please accept our heartfelt thanks for your 
-                generous donation. Your support is invaluable and will help us a lot organizing North 
-                Kent's very first Durga Puja.
+
+        <h2 class="thank-you-title"
+            style="font-family: 'Allura', 'Alex Brush', 'Satisfy', 'Kaushan Script', cursive; font-size: 36px; color: #DC143C !important; text-align: center; margin: 25px 0; font-weight: 400; letter-spacing: 0.5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); background-color: transparent !important;">
+            Thank you for your generous donation</h2>
+
+        <div class="content-text" style="color: #333 !important; background-color: transparent !important;">
+            On behalf of everyone at Kashphool, please accept our heartfelt thanks for your
+            generous donation. Your support is invaluable and will help us a lot organizing North
+            Kent's very first Durga Puja.
+        </div>
+
+        <!-- Invitation Banner as Image -->
+        <div style="margin: 25px 0;">
+            <img src="cid:invitation_banner" alt="Invitation Details"
+                 style="width:100%; max-width:650px; height:auto; display:block; border-radius: 8px">
+        </div>
+
+
+        <div class="content-text" style="color: #333 !important; background-color: transparent !important;">
+            Please register using the following link as this will help to plan accordingly.
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpJRxQb18mYxy7fkhf7L_gcOGU7zGjwtYOxw2GzIpDAugpmA/viewform"
+               target="_blank" class="registration-link">Registration</a>
+        </div>
+
+        <!-- Cultural Performance Section as Image -->
+        <div style="margin: 25px 0;">
+            <img src="cid:cultural_banner" alt="Cultural Program Information"
+                 style="width:100%; max-width:650px; height:auto; display:block; border-radius: 8px">
+        </div>
+
+        <!-- Cultural Performance Button - Outside Banner -->
+        <div style="text-align: center; margin: 25px 0;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpJRxQb18mYxy7fkhf7L_gcOGU7zGjwtYOxw2GzIpDAugpmA/viewform"
+               target="_blank" class="registration-link">Cultural Program Signup</a>
+        </div>
+
+        <!-- Horizontal Bar -->
+        <div style="border-top: 2px solid #FFD700; margin: 30px 0; opacity: 0.7;"></div>
+        <div class="schedule-section">
+            <h3 class="schedule-title">Below is the puja schedule:</h3>
+            <div class="lotus-decoration">❋ ❋ ❋</div>
+            <!-- Schedule Section as Image (fixed appearance across modes) -->
+            <div class="schedule-container">
+                <div class="schedule-inner">
+                    <div style="margin: 5px 0; text-align: center;">
+                        <img src="cid:schedule" alt="Puja Schedule"
+                             style="width:100%; max-width:650px; height:auto; display:block; margin: 0 auto; border-radius: 8px">
+                    </div>
+                </div>
             </div>
-            
-            <div class="invitation-text">
-                <strong>We would like to invite you and your family to join us in celebration. We will
-                also be serving bhog prasad everyday.</strong>
+        </div>
+
+        <!-- Horizontal Bar -->
+        <div style="border-top: 2px solid #FFD700; margin: 30px 0; opacity: 0.7;"></div>
+
+        <!-- Venue Section -->
+        <div class="venue-section">
+            <h3 class="schedule-title">Our Venue:</h3>
+            <div class="venue-info-box">
+                <p><strong>Elite Venue</strong><br>
+                    Dunkirk Cl, Gravesend DA12 5ND</p>
             </div>
-            
-            <div class="content-text">
-                Please register using the following link as this will help to plan accordingly.
-            </div>
-            
-            <div style="text-align: center;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpJRxQb18mYxy7fkhf7L_gcOGU7zGjwtYOxw2GzIpDAugpmA/viewform" target="_blank" class="registration-link">Registration</a>
-            </div>
-            
-            <!-- Cultural Performance Section -->
-            <div class="cultural-section">
-                <p style="font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
-                    <strong>We're also organizing cultural performances every evening. If you or your family
-                    member would like to participate in the cultural events, please sign up below:</strong>
+            <div class="map-container">
+                <a href="https://maps.google.com/?q=Elite+Venue+Dunkirk+Cl+Gravesend+DA12+5ND" target="_blank"
+                   style="text-decoration: none;">
+                    <img src="cid:map" alt="Venue Location Map"
+                         style="width: 100%; max-width: 400px; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                </a>
+                <p style="text-align: center; color: #666; font-size: 12px; margin: 10px 0 0 0;">
+                    <small>Click map to view directions in Google Maps</small>
                 </p>
             </div>
-            
-            <!-- Cultural Performance Button - Outside Banner -->
-            <div style="text-align: center; margin: 25px 0;">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpJRxQb18mYxy7fkhf7L_gcOGU7zGjwtYOxw2GzIpDAugpmA/viewform" target="_blank" class="registration-link">Cultural Program Signup</a>
-            </div>
-            
-            <!-- Horizontal Bar -->
-            <div style="border-top: 2px solid #FFD700; margin: 30px 0; opacity: 0.7;"></div>
-            
-            <!-- Schedule Section -->
-            <div class="schedule-section">
-                <h3 class="schedule-title">Below is the puja schedule:</h3>
-                
-                <div class="lotus-decoration">❋ ❋ ❋</div>
-                
-                <div class="schedule-container">
-                    <div class="schedule-inner">
-                        <!-- Day 1 -->
-                        <div class="schedule-day">
-                            <div class="day-header">28th SEP - Sunday</div>
-                            <div class="event-grid">
-                                <div class="event-item">
-                                    <span class="event-time">Maha Shashthi</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 12PM - 1:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 1:30PM - 2PM</span>
-                                    </div>
-                                </div>
-                                <div class="event-item">
-                                    <span class="event-time">Maha Saptami</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 4PM - 5:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 5:30PM - 6PM</span>
-                                        <span class="event-detail">Cultural Events: 6PM - 7:30PM</span>
-                                        <span class="event-detail">Bhog: 7:30PM - 9PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Day 2 -->
-                        <div class="schedule-day">
-                            <div class="day-header">29th SEP - Monday</div>
-                            <div class="event-grid">
-                                <div class="event-item">
-                                    <span class="event-time">Maha Asthami</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 11AM - 1:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 1:30PM - 2PM</span>
-                                    </div>
-                                </div>
-                                <div class="event-item">
-                                    <span class="event-time">Sandhi Puja</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 4:30PM - 5:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 5:30PM - 6PM</span>
-                                        <span class="event-detail">Cultural Events: 6PM - 7:30PM</span>
-                                        <span class="event-detail">Bhog: 7:30PM - 9PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Day 3 -->
-                        <div class="schedule-day">
-                            <div class="day-header">30th SEP - Tuesday</div>
-                            <div class="event-grid">
-                                <div class="event-item">
-                                    <span class="event-time">Maha Nabami</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 11AM - 12:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 12:30PM - 1PM</span>
-                                    </div>
-                                </div>
-                                <div class="event-item">
-                                    <span class="event-time">Maha Dashami</span>
-                                    <div class="event-name">
-                                        <span class="event-detail">Puja: 3PM - 4:30PM</span>
-                                        <span class="event-detail">Pushpanjali: 4:30PM - 5PM</span>
-                                        <span class="event-detail">Visarjan: 5PM - 5:30PM</span>
-                                        <span class="event-detail">Sindoor Khela: 5:30PM - 6PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Horizontal Bar -->
-            <div style="border-top: 2px solid #FFD700; margin: 30px 0; opacity: 0.7;"></div>
-            
-            <!-- Venue Section -->
-            <div class="venue-section">
-                <h3 class="schedule-title">Our Venue:</h3>
-                <div class="venue-info-box">
-                    <p><strong>Elite Venue</strong><br>
-                    Dunkirk Cl, Gravesend DA12 5ND</p>
-                </div>
-                <div class="map-container">
-                    <a href="https://maps.google.com/?q=Elite+Venue+Dunkirk+Cl+Gravesend+DA12+5ND" target="_blank" style="text-decoration: none;">
-                        <img src="cid:map" alt="Venue Location Map" style="width: 100%; max-width: 400px; border: 2px solid #ccc; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
-                    </a>
-                    <p style="text-align: center; color: #666; font-size: 12px; margin: 10px 0 0 0;">
-                        <small>Click map to view directions in Google Maps</small>
-                    </p>
-                </div>
-            </div>
-            
-            <div class="content-text">
-                We look forward to celebrating this auspicious occasion with you and your family. 
-                May Maa Durga bless you with happiness, prosperity, and good health.
-            </div>
-            
-            <!-- Signature Section -->
-            <div class="signature-section" style="margin-top: 40px; padding: 20px 0; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 200px;">
-                    <div class="signature-text" style="font-size: 16px; color: #444; margin-bottom: 20px;">
-                        Thanks and Regards,<br>
-                        <strong>Kashphool Team</strong>
-                    </div>
-                    <div class="signature-logo" style="text-align: left;">
-                        <img src="cid:signature-logo" alt="Kashphool Team Signature" style="max-width: 120px; height: auto;">
-                    </div>
-                </div>
-            </div>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <!-- Organization Name - Center -->
-            <div class="footer-text" style="text-align: center; margin-bottom: 18px;">
-                <strong>North Kent Bengali Association</strong>
-            </div>
-            
-            <!-- Contact Info and Social Icons - Flex Layout -->
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; gap: 20px;">
-                <!-- Contact Info - Left -->
-                <div style="text-align: left; flex: 1; font-size: 14px; color: #FFD700; min-width: 300px;">
-                    Email: <a href="mailto:kashphoolbengaliassociation@gmail.com" style="color: #FFFFFF !important; text-decoration: none !important; -webkit-text-fill-color: #FFFFFF !important;">kashphoolbengaliassociation@gmail.com</a><br>
-                    <span style="font-size: 12px;">Kaushik Banerjee - 07522883400 | Joy Sen - 07564060471<br>
-                    Abhishek Ghosh - 07706345368 | Tanumoy Talukder - 07923133714</span>
+
+        <div class="content-text">
+            We look forward to celebrating this auspicious occasion with you and your family.
+            May Maa Durga bless you with happiness, prosperity, and good health.
+        </div>
+
+        <!-- Signature Section -->
+        <div class="signature-section"
+             style="margin-top: 40px; padding: 20px 0; border-top: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 200px;">
+                <div class="signature-text" style="font-size: 16px; color: #444; margin-bottom: 20px;">
+                    Thanks and Regards,<br>
+                    <strong>Kashphool Team</strong>
                 </div>
-                
-                <!-- Social Media Icons - Right -->
-                <div style="display: flex; gap: 10px; align-items: center; margin-left: 20px;">
-                    <span style="font-size: 14px; color: #FFD700; margin-right: 10px; white-space: nowrap;">Follow us:</span>
-                    <a href="https://www.facebook.com/share/g/19xsE3yVAq/?mibextid=wwXIfr" target="_blank" style="text-decoration: none;">
-                        <img src="cid:facebook-icon" alt="Facebook" style="width: 24px; height: 24px; border-radius: 4px;">
-                    </a>
-                    <a href="https://chat.whatsapp.com/JI0QnNz6JnA1CktR6FFtEM?mode=ems_qr_c" target="_blank" style="text-decoration: none;">
-                        <img src="cid:whatsapp-icon" alt="WhatsApp" style="width: 24px; height: 24px; border-radius: 4px;">
-                    </a>
+                <div class="signature-logo" style="text-align: left;">
+                    <img src="cid:signature-logo" alt="Kashphool Team Signature"
+                         style="max-width: 120px; height: auto;">
                 </div>
-            </div>
-            
-            <!-- Email Disclaimer - Left -->
-            <div style="text-align: left; font-size: 11px; color: #FFD700;">
-                <small>This email was sent to {{email}}. For any queries, please contact us at the above details.</small>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <!-- Organization Name - Center -->
+        <div class="footer-text" style="text-align: center; margin-bottom: 18px;">
+            <strong>North Kent Bengali Association</strong>
+        </div>
+
+        <!-- Contact Info and Social Icons - Flex Layout -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 10px; gap: 20px;">
+            <!-- Contact Info - Left -->
+            <div style="text-align: left; flex: 1; font-size: 14px; color: #FFD700; min-width: 300px;">
+                Email: <a href="mailto:kashphoolbengaliassociation@gmail.com"
+                          style="color: #FFFFFF !important; text-decoration: none !important; -webkit-text-fill-color: #FFFFFF !important;">kashphoolbengaliassociation@gmail.com</a><br>
+                <span style="font-size: 12px;">Kaushik Banerjee - 07522883400 | Joy Sen - 07564060471<br>
+                    Abhishek Ghosh - 07706345368 | Tanumoy Talukder - 07923133714</span>
+            </div>
+
+            <!-- Social Media Icons - Right -->
+            <div style="display: flex; gap: 10px; align-items: center; margin-left: 20px;">
+                <span style="font-size: 14px; color: #FFD700; margin-right: 10px; white-space: nowrap;">Follow us:</span>
+                <a href="https://www.facebook.com/share/g/19xsE3yVAq/?mibextid=wwXIfr" target="_blank"
+                   style="text-decoration: none;">
+                    <img src="cid:facebook-icon" alt="Facebook" style="width: 24px; height: 24px; border-radius: 4px;">
+                </a>
+                <a href="https://chat.whatsapp.com/JI0QnNz6JnA1CktR6FFtEM?mode=ems_qr_c" target="_blank"
+                   style="text-decoration: none;">
+                    <img src="cid:whatsapp-icon" alt="WhatsApp" style="width: 24px; height: 24px; border-radius: 4px;">
+                </a>
+            </div>
+        </div>
+
+        <!-- Email Disclaimer - Left -->
+        <div style="text-align: left; font-size: 11px; color: #FFD700;">
+            <small>This email was sent to {{email}}. For any queries, please contact us at the above details.</small>
+        </div>
+    </div>
+</div>
 </body>
 </html>

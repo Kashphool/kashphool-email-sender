@@ -93,7 +93,11 @@ class TemplatedEmailSender:
             ("images/map.png", "map"),
             ("images/signature-logo.png", "signature-logo"),
             ("images/facebook-50.png", "facebook-icon"),
-            ("images/whatsapp-50.png", "whatsapp-icon")
+            ("images/whatsapp-50.png", "whatsapp-icon"),
+            # New fixed-color section images
+            ("images/invitation_banner.png", "invitation_banner"),
+            ("images/cultural_banner.png", "cultural_banner"),
+            ("images/schedule.png", "schedule"),
         ]
         
         for file_path, cid in image_files:
