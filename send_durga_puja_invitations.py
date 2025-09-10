@@ -36,7 +36,7 @@ def main():
         results = sender.send_bulk_emails(
             csv_file_path=csv_file,
             template_name="durga_puja_invitation.html",
-            subject_template="🪔 You're Invited: Kashphool, Durga Puja 2025! 🪔"
+            subject_template="🪔 Your invitation to Kashphool, Durga Puja 2025! 🪔"
         )
         
         # Print results
